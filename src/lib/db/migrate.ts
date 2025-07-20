@@ -7,6 +7,8 @@ import postgres from 'postgres';
 
 const runMigrations = async () => {
   const connectionString = process.env.DATABASE_URL;
+
+  console.info('DB connectionString', connectionString);
   
   if (!connectionString) {
     throw new Error('DATABASE_URL environment variable is required');

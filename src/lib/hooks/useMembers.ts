@@ -3,39 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-
-interface Member {
-  id: string;
-  membershipNumber: string;
-  status: string;
-  joinDate: string;
-  user: {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    phone?: string;
-    profilePhotoUrl?: string;
-  };
-  activeMembership?: {
-    membershipPlan: {
-      name: string;
-      price: string;
-    };
-    status: string;
-    nextBillingDate: string;
-  };
-}
-
-interface MembersResponse {
-  members: Member[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    pages: number;
-  };
-}
+import { Member, MembersResponse } from '@/types';
 
 export function useMembers(page = 1, limit = 20, search?: string, status?: string) {
   const { data: session } = useSession();
